@@ -1,0 +1,11 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        stringInt = str(x)
+        start = ""
+        if stringInt[0] == "-":
+            start = "-"
+            stringInt = stringInt[1::]
+        reversedString = stringInt[::-1]
+        if int(reversedString) > 2147483647:
+            return 0
+        return int(start + reversedString)
