@@ -1,0 +1,31 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        s = s.strip()
+        start = ""
+        returnString = ""
+        inNum = False
+        if s == "":
+            return 0
+        if s[0] == "-":
+            start = "-"
+            s = s[1::]
+        elif s[0] == "+":
+            s = s[1::]
+        elif not s[0].isnumeric:
+            return 0
+        
+        if s == "":
+            return 0
+
+        for i in s:
+            if i.isnumeric():
+                returnString += i
+            else:
+                if returnString == "":
+                    return 0
+                else:
+                    break
+        returnString= str((2**31)-1) if start == "" and int(returnString) > (2**31)-1 else returnString
+        returnString= str((2**31)) if start == "-" and int(returnString) > (2**31) else returnString
+        return int(start+returnString)
+            
