@@ -1,0 +1,13 @@
+class Solution:
+    def divideArray(self, nums: List[int]) -> bool:
+        times = {}
+        for num in nums:
+            if num in times:
+                times[num] += 1
+            else:
+                times[num] = 1
+            
+        for i in times:
+            if times[i] % 2 != 0:
+                return False
+        return True
