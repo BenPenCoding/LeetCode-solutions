@@ -1,0 +1,22 @@
+class Solution:
+    def longestNiceSubarray(self, nums: List[int]) -> int:
+        def checkAll(num,array):
+            for i in array:
+                if num & i != 0:
+                    return False
+            return True
+
+        
+        longest = 1 
+        for i in range(len(nums)):
+            num = nums[i]
+            niceNums = [num]
+            ptr = i+1
+            while ptr < len(nums):
+                if checkAll(nums[ptr], niceNums):
+                    niceNums.append(nums[ptr])
+                    longest = max(longest, len(niceNums))
+                    ptr += 1
+                else:
+                    break 
+        return longest
