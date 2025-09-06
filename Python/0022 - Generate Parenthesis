@@ -1,0 +1,23 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+
+        returnList = []
+
+        def generate(string, open, close):
+
+            if len(string) == 2 * n:
+
+                returnList.append(string)
+                return
+
+            if open < n:
+
+                generate(string + "(", open + 1, close)
+
+            if close < open:
+
+                generate(string + ")", open, close + 1)
+
+        generate("", 0, 0)
+
+        return returnList
